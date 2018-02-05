@@ -3,6 +3,12 @@ function printSvg(svg,filename)
 	var clone = svg.cloneNode(true);
     clone.id = "svg-print";
     document.body.appendChild(clone);
+    var bbox = clone.getBBox();
+    var viewBox = [bbox.x - 10, bbox.y - 10, bbox.width + 20, bbox.height + 20].join(" ");
+    clone.setAttribute("width", bbox.width + 20);
+    clone.setAttribute("height", bbox.height + 20);
+    clone.setAttribute("viewBox", viewBox);
+
     var elements = clone.querySelectorAll("*");
     var cs;
     for (var i = 0; i < elements.length; i++) {
