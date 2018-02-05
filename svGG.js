@@ -20,7 +20,7 @@ function printSvg(svg,filename)
 
 
     var xml = new XMLSerializer().serializeToString(clone),
-        data = "data:image/svg+xml;base64," + btoa(xml);
+        data = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(xml)));
     document.body.removeChild(clone);
     var link = document.createElement("a");
     link.href = data;
